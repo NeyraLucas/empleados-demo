@@ -1,1 +1,76 @@
-<p>empleados-puestos works!</p>
+<h2 class="title">Empleados puestos</h2>
+<section class="grid col-2 container">
+  <!-- Table -->
+  <div class="shadow forms">
+    <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput  placeholder="Ex. ium" #input>
+    </mat-form-field>
+    <table mat-table [dataSource]="listEmpleadosPuestos" class="mat-elevation-z8">
+
+      <!-- id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <!-- nombre Column -->
+      <ng-container matColumnDef="puesto">
+        <th mat-header-cell *matHeaderCellDef> Puesto </th>
+        <td mat-cell *matCellDef="let element"> <p *ngFor="let el of element.puesto">{{el | json}}</p> </td>
+      </ng-container>
+
+      <!-- apellido Column -->
+      <ng-container matColumnDef="persona">
+        <th mat-header-cell *matHeaderCellDef> Persona </th>
+        <td mat-cell *matCellDef="let element"> <p *ngFor="let el of element.persona">{{el | json}}</p> </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="primary" (click)="openDialog(element.id)">Editar</button>
+          |
+          <button mat-raised-button color="warn" (click)="delete(element.id)">Eliminar</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+  </div>
+
+  <!-- Forms -->
+  <div class="shadow forms center">
+    <button mat-raised-button color="accent">Agregar registro</button>
+    <div>
+      <form class="flex flex-column p-t-10" [formGroup]="formEmpleadoPuesto" (submit)="SendaData()" >
+
+        <mat-form-field appearance="outline">
+          <mat-label>ID</mat-label>
+          <input matInput placeholder="ID" type="number" formControlName="id" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Selecciona un puesto</mat-label>
+          <mat-select formControlName="puesto">
+            <mat-option *ngFor="let element of puestos" [value]="element.id">{{element.nombre}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Selecciona una persona</mat-label>
+          <mat-select formControlName="persona">
+            <mat-option *ngFor="let element of personas" [value]="element.id">{{element.nombre}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+
+        <button type="submit" mat-raised-button color="accent">Enviar</button>
+      </form>
+    </div>
+  </div>
+</section>

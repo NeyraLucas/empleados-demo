@@ -21,24 +21,29 @@ export class PersonasComponent implements OnInit, OnChanges {
     nombre: ['', [Validators.required]],
     apellido: ['', [Validators.required]],
     fecha: ['', [Validators.required]],
-  })
+  });
 
-  constructor(private sp: PersonasService, private fb: FormBuilder, private dialog: MatDialog) {}
+  constructor(
+    private sp: PersonasService,
+    private fb: FormBuilder,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.listPersonas = this.sp.getAllPersonas();
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
     this.listPersonas = this.sp.getAllPersonas();
   }
 
-  SendaData(){
+  SendaData() {
     if (this.formPersonas.valid) {
-      const contact = this.formPersonas.value;
+      const contact: any = this.formPersonas.value;
       try {
         alert('Formulario enviado');
-        this.sp.saveLocalStorage("persona", contact);
+        //save localstorage
+        this.sp.insertPersona(contact);
         this.listPersonas = this.sp.getAllPersonas();
 
         this.formPersonas.reset();
@@ -48,10 +53,9 @@ export class PersonasComponent implements OnInit, OnChanges {
     } else {
       alert('Error en el formulario');
     }
-
   }
 
-  delete(uid:number){
+  delete(uid: number) {
     this.sp.deletePersona(uid);
     this.listPersonas = this.sp.getAllPersonas();
   }
@@ -62,7 +66,4 @@ export class PersonasComponent implements OnInit, OnChanges {
       data: this.sp.getPersonasById(uid),
     });
   }
-
 }
-
-

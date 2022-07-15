@@ -1,13 +1,15 @@
-<h1>Prueba</h1>
-<ul>
-  <li>
-    <a routerLink="/home/personas">Personas</a>
-  </li>
-  <li>
-    <a routerLink="/home/puestos">puestos</a>
-  </li>
-  <li>
-    <a routerLink="/home/empleados-puestos">empleados puestos</a>
-  </li>
-</ul>
+<nav class="nav flex flex-row">
+  <h1>Prueba</h1>
+  <ul class="flex flex-row">
+    <li>
+      <a routerLink="/home/personas" routerLinkActive="active">Personas</a>
+    </li>
+    <li>
+      <a routerLink="/home/puestos" routerLinkActive="active">Puestos</a>
+    </li>
+    <li>
+      <a routerLink="/home/empleados-puestos" routerLinkActive="active">Empleados puestos</a>
+    </li>
+  </ul>
+</nav>
 <router-outlet></router-outlet>

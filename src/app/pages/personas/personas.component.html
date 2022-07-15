@@ -1,7 +1,7 @@
-<h1>Personas</h1>
+<h2 class="title">Personas</h2>
 <section class="grid col-2 container">
   <!-- Table -->
-  <div>
+  <div class="shadow forms">
     <mat-form-field appearance="standard">
       <mat-label>Filter</mat-label>
       <input matInput  placeholder="Ex. ium" #input>
@@ -49,15 +49,15 @@
   </div>
 
   <!-- Forms -->
-  <div class="center">
+  <div class="shadow center forms">
     <button mat-raised-button color="accent">Agregar registro</button>
-    <div>
-      <form class="flex flex-column" [formGroup]="formPersonas" (submit)="SendaData()" [hidden]="true">
+    <div >
+      <form class="flex flex-column p-t-10" [formGroup]="formPersonas" (submit)="SendaData()" >
 
         <div class="grid col-2">
           <mat-form-field appearance="outline">
             <mat-label>ID</mat-label>
-            <input matInput placeholder="ID" formControlName="id">
+            <input matInput placeholder="ID" type="number" formControlName="id">
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Nombre</mat-label>

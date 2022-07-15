@@ -1,0 +1,29 @@
+<!-- Forms -->
+<div class="center">
+  <div>
+    <form class="flex flex-column" [formGroup]="formModal" >
+
+      <mat-form-field appearance="outline">
+        <mat-label>ID</mat-label>
+        <input matInput placeholder="ID" type="number" formControlName="id" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Selecciona un puesto</mat-label>
+        <mat-select  formControlName="puesto" >
+          <mat-option *ngFor="let element of puesto" [value]="element.id">{{element.nombre}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Selecciona una persona</mat-label>
+        <mat-select formControlName="persona">
+          <mat-option *ngFor="let element of personas" [value]="element.id">{{element.nombre}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button type="submit" mat-raised-button color="primary" (click)="UpdateData()" >Enviar</button>
+      <button mat-raised-button (click)="onClose()"color="accent">Cerrar</button>
+    </form>
+  </div>
+</div>
