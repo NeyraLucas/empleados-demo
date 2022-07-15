@@ -1,0 +1,32 @@
+<!-- Forms -->
+<div class="center">
+  <div>
+    <form
+      class="flex flex-column"
+      [formGroup]="formModal"
+
+    >
+      <mat-form-field appearance="outline">
+        <mat-label>ID</mat-label>
+        <input matInput placeholder="ID" formControlName="id" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre" formControlName="nombre" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Apellido</mat-label>
+        <input matInput placeholder="Apellido" formControlName="apellido" />
+      </mat-form-field>
+
+      <input class="m-b-15" type="date" formControlName="fecha" />
+
+      <div class="grid col-2">
+        <button type="submit" mat-raised-button (click)="UpdateData()"  color="accent">Enviar</button>
+        <button mat-raised-button (click)="onClose()"color="accent">Cerrar</button>
+      </div>
+    </form>
+  </div>
+</div>

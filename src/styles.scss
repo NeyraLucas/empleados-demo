@@ -1,1 +1,71 @@
-/* You can add global styles to this file, and also import other style files */
+$unit: "px";
+$max: 50;
+$offset: 5;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@mixin list-loop($className, $styleName) {
+  $i: 0;
+  @while $i <= $max {
+    #{$className + $i} {
+      #{$styleName}: #{$i + $unit};
+    }
+    $i: $i + $offset;
+  }
+}
+// Margins
+@include list-loop(".m-t-", "margin-top");
+@include list-loop(".m-r-", "margin-right");
+@include list-loop(".m-b-", "margin-bottom");
+@include list-loop(".m-l-", "margin-left");
+@include list-loop(".m-x-", "margin");
+
+// Paddings
+@include list-loop(".p-t-", "padding-top");
+@include list-loop(".p-r-", "padding-right");
+@include list-loop(".p-b-", "padding-bottom");
+@include list-loop(".p-l-", "padding-left");
+@include list-loop(".p-x-", "padding");
+
+
+table {
+  width: 100%;
+}
+
+.flex{
+  display: flex;
+}
+
+.flex-row{
+  flex-direction: row;
+}
+
+.flex-column{
+  flex-direction: column;
+}
+
+.center{
+  align-items: center;
+  justify-content: center;
+}
+
+.debug{
+  border: solid 1px red;
+}
+
+.grid{
+  display: grid;
+}
+
+.col-2{
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.container{
+  width: 95%;
+  margin: 0 auto;
+}
+
+
